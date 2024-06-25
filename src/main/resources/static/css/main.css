@@ -1,0 +1,271 @@
+body {
+    font-family: 'Inder';
+}
+
+.btn {
+    padding: 6px 22px;
+}
+
+.bg-btn {
+    background-color: #E9CC68;
+}
+
+.btne {
+    cursor: pointer;
+    color: #202020;
+    border-radius: 5px;
+    padding: 8px 22px;
+    text-decoration: none;
+}
+
+.btne:hover {
+    color: #202020;
+}
+
+.btnd {
+    cursor: pointer;
+    color: #fafafa;
+    border-radius: 5px;
+    padding: 8px 22px;
+    text-decoration: none;
+}
+
+.btnd:hover {
+    color: #fafafa;
+}
+
+.bg-btne {
+    background-color: #ffc107;
+}
+
+.bg-btnd {
+    background-color: #dc3545;
+}
+
+.btnr{
+    color:#fafafa ;
+}
+
+.h4b {
+    font-size: 16px;
+    color: #202020;
+}
+
+.h4b:hover {
+    color: #202020;
+}
+
+.h4d {
+    font-size: 16px;
+    color: #fafafa;
+}
+
+.h4d:hover {
+    color: #fafafa;
+}
+
+.fs-b {
+    font-size: 35px !important;
+}
+
+.w-btn {
+    width: 16px;
+}
+
+.mb-fon {
+    color: #202020;
+    font-size: 35px !important;
+    margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+    .fs-b {
+        font-size: 50px !important;
+    }
+
+    .h4b {
+        font-size: 18px;
+    }
+    
+    .h4d{
+        font-size: 18px;
+    }
+
+    .w-btn {
+        width: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .employee-row>div:not(:first-child) {
+        display: none;
+    }
+
+    .employee-row>div:first-child {
+        width: 100%;
+    }
+
+    .employee-row.collapsed>div {
+        display: block;
+        width: 100%;
+    }
+
+    .client-row.collapsed>div {
+        display: block;
+        width: 100%;
+    }
+
+    .lg-ct {
+        display: none;
+    }
+}
+
+@media (min-width: 601px) {
+    .employee-row {
+        display: flex;
+    }
+
+    .employee-row>div {
+        display: block;
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #dee2e6;
+    }
+}
+
+.collapse-content>div {
+    padding: 8px;
+    border-top: 1px solid #dee2e6;
+}
+
+.collapse-btn {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.collapse-btn i {
+    margin-right: 8px;
+}
+
+/**/
+
+
+@media (min-width:768px) {
+    .employee-row>div {
+        display: none;
+    }
+
+    .sm-ct {
+        display: none;
+    }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #8EC7D2;
+  border-color: #86c5d1;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #76afbb;
+  border-color: #76afbb;
+}
+
+.bg-logob {
+    background-color: #093F6A !important;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem
+}
+
+.bg-navb {
+    background-color: #0B6770;
+}
+
+.fs-b {
+    font-size: 50px !important
+}
+
+.fs-nb {
+    font-size: 30px !important
+}
+
+.w-logout {
+    width: 15px;
+}
+
+.text-bt {
+    color: #626262;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.floating-button:hover {
+    background-color: #0056b3;
+}
+
+svg {
+    color: #fff;
+    width: 14px;
+}
+
+.btnr {
+    color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 6px 22px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-back {
+    color: #fff;
+    background-color: #588547;
+    border-color: transparent;
+}
+
+.btn-back:hover {
+    color: #fff;
+    background-color: #477038;
+    border-color: transparent;
+}

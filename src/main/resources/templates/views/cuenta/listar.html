@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8">
+	<title>Listar Cuentas</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}">
+
+	<!-- <link rel="stylesheet" href="../../../static/css/bootstrap.min.css"> -->
+	<!-- <link rel="shortcut icon" href="../../static/imagenes/logobb.png" type="image/x-icon"> -->
+	<link rel="shortcut icon" href="/imagenes/logobb.png" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.5/dist/bootstrap-table.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet" />
+	<style>
+		body {
+			font-family: 'Inder';
+		}
+
+		.btn {
+			padding: 8px 22px;
+		}
+
+		.bg-btn {
+			background-color: #3B6067;
+		}
+
+		.h4b {
+			font-size: 16px;
+			color: #fafafa;
+		}
+
+		.h4b:hover {
+			color: #fafafa;
+		}
+
+		.fs-b {
+			font-size: 35px !important
+		}
+
+		.w-btn {
+			width: 16px;
+		}
+
+		@media (min-width:768px) {
+			.fs-b {
+				font-size: 50px !important
+			}
+
+			.h4b {
+				font-size: 18px
+			}
+
+			.w-btn {
+				width: 18px;
+			}
+
+			.btn {
+				padding: 12px 26px;
+			}
+		}
+
+		.modal {
+			display: none;
+			/* Initial display is none */
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgb(0, 0, 0);
+			background-color: rgba(0, 0, 0, 0.4);
+			padding-top: 60px;
+		}
+
+		.modal-content {
+			background-color: #fefefe;
+			margin: 5% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+		}
+
+		.modal-footer {
+			padding: 10px;
+			text-align: right;
+		}
+
+		@media (max-width: 568px) {
+
+			.table thead,
+			.table tbody,
+			th,
+			tr,
+			td {
+				display: block;
+				text-align: center;
+				width: 100%;
+				border-bottom: 1px solid #333;
+			}
+
+			.table thead {
+				display: none;
+			}
+
+			.table tbody tr {
+				border-radius: 8px;
+				border: 1px solid #333;
+				margin-bottom: 10px;
+			}
+
+			.table>:not(caption)>*>* {
+				border-bottom: 2px solid #333;
+			}
+
+		}
+	</style>
+</head>
+
+<body>
+	<header th:replace="plantillas/navbar::header(3)"></header>
+
+
+	<div class="container">
+		<div class="navbar navbar-expand-lg">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<h2 class="fs-b">Listar Cuentas</h2>
+				</li>
+			</ul>
+			<!-- <ul class="navbar-nav d-flex mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="text-reset me-3" th:href="@{/export-cuentas-pdf}"> <img src="/imagenes/file-pdf.svg"
+							width="35px"></a>
+				</li>
+			</ul> -->
+			<button type="button" class="btn bg-btn">
+				<a class="text-decoration-none d-flex gap-1 align-items-center h4b" th:href="@{/export-cuentas-pdf}">
+					Descargar PDF
+					<img src="/imagenes/download-icon.svg" class="w-btn" alt="icono descargar pdf de cuentas"></a>
+			</button>
+		</div>
+	</div>
+
+	<section class="container">
+		<div class="card border-dark">
+			<div class="card-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Código</th>
+							<th scope="col">Moneda</th>
+							<th scope="col">Sucursal</th>
+							<th scope="col">Empleado</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Saldo</th>
+							<th scope="col">Creación</th>
+							<th scope="col">Movimiento</th>
+							<th scope="col">Estado</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c:${cuentas}">
+							<td th:text="${c.codigoCuenta}"></td>
+							<td th:text="${c.moneda}"></td>
+							<td th:text="${c.sucursal}"></td>
+							<td th:text="${c.empleado}"></td>
+							<td th:text="${c.cliente}"></td>
+							<td th:text="${c.cuentaSaldo}"></td>
+							<td th:text="${c.fechaCreacion}"></td>
+							<td th:text="${c.tipoMovimiento}"></td>
+							<td th:text="${c.estado}"></td>
+						</tr>
+					</tbody>
+				</table>
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+							<a class="page-link" th:href="@{/views/cuenta(pagina=${currentPage - 1})}">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						<li class="page-item" th:each="i : ${pagesArray}" th:classappend="${currentPage == i} ? 'active'">
+							<a class="page-link" th:href="@{/views/cuenta(pagina=${i})}" th:text="${i + 1}">1</a>
+						</li>
+						<li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+							<a class="page-link" th:href="@{/views/cuenta(pagina=${currentPage + 1})}">
+
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<!-- Modal Structure -->
+	<div id="emptyListModal" th:if="${showModal}" class="modal">
+		<div class="modal-content">
+			<h4>No Movements Found</h4>
+			<p>The list of movements is empty.</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+		</div>
+	</div>
+
+	<footer th:replace="home::footer"></footer>
+</body>
+
+</html>

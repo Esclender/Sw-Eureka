@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agregar Empleado</title>
+  <link rel="shortcut icon" href="/imagenes/logobb.png" type="image/x-icon">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <!-- <link rel="stylesheet" href="../../../static/css/bootstrap.min.css"> -->
+  <!-- <link rel="shortcut icon" href="../../static/imagenes/logobb.png" type="image/x-icon"> -->
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Inder";
+    }
+
+    .card-header {
+      padding: 0.5rem 1rem;
+      margin-bottom: 0;
+      background-color: transparent;
+      border-bottom: transparent;
+    }
+
+    .card-header h2 {
+      font-size: 35px;
+    }
+
+    .card {
+      border-radius: 10px;
+    }
+
+    .text-wb {
+      font-size: 17px;
+      color: #202020;
+    }
+
+    .text-wb:hover {
+      color: #202020;
+    }
+
+    .btn {
+      padding: 6px 22px;
+    }
+  </style>
+</head>
+
+<body>
+  <header th:replace="home::header"></header>
+  <div class="container p-3">
+    <br />
+    <button onclick="window.history.back()" type="submit" class="btnr btn-back">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path fill="#fff"
+          d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+      </svg>
+      Regresar
+    </button>
+    <div class="card">
+      <div class="card-header">
+        <h2>Agregar Empleado</h2>
+      </div>
+      <div class="card-body">
+        <form th:action="@{/views/empleado/save}" th:object="${empleado}" method="post">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Apellido Paterno</label>
+              <input type="text" class="form-control" name="paterno" placeholder="Apellido Paterno"
+                th:field="*{paterno}" th:errorclass="'form-control is-invalid'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('paterno')}"
+                th:errors="*{paterno}"></small>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Apellido Materno</label>
+              <input type="text" class="form-control" name="materno" placeholder="Apellido Materno"
+                th:field="*{materno}" th:errorclass="'form-control is-invalid'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('materno')}"
+                th:errors="*{materno}"></small>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Nombres</label>
+              <input type="text" class="form-control" name="nombres" placeholder="Nombres" th:field="*{nombres}"
+                th:errorclass="'form-control is-invalid'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('nombres')}"
+                th:errors="*{nombres}"></small>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Usuario</label>
+              <input type="text" class="form-control" name="usuario" placeholder="Usuario" th:field="*{usuario}"
+                th:errorclass="'form-control is-invalid'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('usuario')}"
+                th:errors="*{usuario}"></small>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Contraseña</label>
+              <input type="text" class="form-control" name="password" placeholder="Contraseña" th:field="*{password}"
+                th:errorclass="'form-control is-invalid'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}"
+                th:errors="*{password}"></small>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary text-wb">
+                Guardar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer th:replace="home::footer"></footer>
+</body>
+
+</html>

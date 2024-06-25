@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Login</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<!-- <link rel="stylesheet" href="../../static/css/bootstrap.min.css" /> -->
+	<!-- <link rel="shortcut icon" href="../../static/imagenes/logobb.png" type="image/x-icon"> -->
+	<link rel="shortcut icon" href="/imagenes/logobb.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet" />
+	<style type="text/css">
+		body {
+			font-family: "Inder";
+		}
+
+		.bg-image {
+			position: fixed;
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			height: 100vh;
+			background-image: url("/imagenes/img-bg.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			z-index: 100;
+		}
+
+		.box-login {
+			backdrop-filter: blur(5px);
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.form-inputb {
+			display: block;
+			width: 387px;
+			padding: 10px 16px;
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 1.5;
+			color: #212529;
+			background-color: #fff;
+			background-clip: padding-box;
+			border: 2px solid #ced4da;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			border-radius: 8px;
+			transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+			outline: none;
+		}
+
+		.form-flex {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.inputs-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.btn-bn {
+			font-size: 20px;
+			color: #fafafa;
+			background-color: #0B6770;
+		}
+
+		.btn-bn:hover {
+			color: #fafafa;
+			background-color: #0B6770;
+		}
+
+		.btn {
+			padding: 8px 100px;
+		}
+
+		.wf-center {
+			padding-bottom: 20px;
+			justify-content: center;
+			width: 100%;
+		}
+
+		.wf-start {
+			padding-bottom: 20px;
+			justify-content: flex-start;
+			width: 100%;
+		}
+
+		.radi {
+			border-radius: 10px;
+		}
+
+		@media (max-width: 440px) {
+			.form-inputb {
+				width: 300px;
+			}
+
+			.btn {
+				padding: 8px 60px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="bg-image">
+		<div class="box-login">
+			<div class="card radi">
+				<div class="card-body">
+					<div class="wf-center d-flex align-items-center">
+						<img src="@{/imagenes/logobb.png}" alt="">
+					</div>
+					<h3 class="wf-start">Bienvenido!</h3>
+					<div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Usuario esta INACTIVO!</strong>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Usuario esta INACTIVO!</strong>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div> -->
+					<form th:action="@{/sign-in}" method="post" class="form-flex">
+						<!-- <div class="mb-3">
+							<label class="form-label">Usuario</label>
+							<input type="text" class="form-control" name="usuario" placeholder="Usuario">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Password</label>
+							<input type="password" class="form-control" name="password" placeholder="Password">
+						</div>
+						<input type="submit" class="form-control btn btn-primary" value="Iniciar Sesión"> -->
+						<div class="inputs-form">
+							<div class="form-group">
+								<input type="text" class="form-inputb" name="usuario" placeholder="Usuario" />
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-inputb" name="password" placeholder="Contraseña" />
+							</div>
+						</div>
+						<button type="submit" class="btn btn-bn">
+							Iniciar sesión
+						</button>
+						<!-- #0B6770 -->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+	<!-- <script src="../../static/js/bootstrap.min.js"></script>
+	<script src="../../static/js/jquery-3.1.1.min.js"></script>
+	<script src="../../static/js/popper.min.js"></script> -->
+</body>
+
+</html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Login</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<!-- <link rel="stylesheet" href="../../static/css/bootstrap.min.css" /> -->
+	<!-- <link rel="shortcut icon" href="../../static/imagenes/logobb.png" type="image/x-icon"> -->
+	<link rel="shortcut icon" href="@{/imagenes/logobb.png}" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet" />
+	<style type="text/css">
+		body {
+			font-family: "Inder";
+		}
+
+		.bg-image {
+			position: fixed;
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			height: 100vh;
+			background-image: url("/imagenes/img-bg.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			z-index: 100;
+		}
+
+		.box-login {
+			backdrop-filter: blur(5px);
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.form-inputb {
+			display: block;
+			width: 387px;
+			padding: 10px 16px;
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 1.5;
+			color: #212529;
+			background-color: #fff;
+			background-clip: padding-box;
+			border: 2px solid #ced4da;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			border-radius: 8px;
+			transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+			outline: none;
+		}
+
+		.form-flex {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.inputs-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.btn-bn {
+			font-size: 20px;
+			color: #fafafa;
+			background-color: #0B6770;
+		}
+
+		.btn-bn:hover {
+			color: #fafafa;
+			background-color: #0B6770;
+		}
+
+		.btn {
+			padding: 8px 100px;
+		}
+
+		.wf-center {
+			padding-bottom: 20px;
+			justify-content: center;
+			width: 100%;
+		}
+
+		.wf-start {
+			padding-bottom: 20px;
+			justify-content: flex-start;
+			width: 100%;
+		}
+
+		.radi {
+			border-radius: 10px;
+		}
+
+		@media (max-width: 440px) {
+			.form-inputb {
+				width: 300px;
+			}
+
+			.btn {
+				padding: 8px 60px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="bg-image">
+		<div class="box-login">
+			<div class="card radi">
+				<div class="card-body">
+					<div class="wf-center d-flex align-items-center">
+						<img src="/imagenes/logobb.png" alt="">
+					</div>
+					<h3 class="wf-start">Bienvenido!</h3>
+					<div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Usuario no valido</strong>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<form th:action="@{/sign-in}" method="post" class="form-flex">
+						<!-- <div class="mb-3">
+							<label class="form-label">Usuario</label>
+							<input type="text" class="form-control" name="usuario" placeholder="Usuario">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Password</label>
+							<input type="password" class="form-control" name="password" placeholder="Password">
+						</div>
+						<input type="submit" class="form-control btn btn-primary" value="Iniciar Sesión"> -->
+						<div class="inputs-form">
+							<div class="form-group">
+								<input type="text" class="form-inputb" name="usuario" placeholder="Usuario" />
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-inputb" name="password" placeholder="Contraseña" />
+							</div>
+						</div>
+						<button type="submit" class="btn btn-bn">
+							Iniciar sesión
+						</button>
+						<!-- #0B6770 -->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+	<!-- <script src="../../static/js/bootstrap.min.js"></script>
+	<script src="../../static/js/jquery-3.1.1.min.js"></script>
+	<script src="../../static/js/popper.min.js"></script> -->
+</body>
+
+</html>

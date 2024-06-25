@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8">
+	<title>Editar Empleado</title>
+	<link rel="shortcut icon" href="/imagenes/logobb.png" type="image/x-icon">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<!-- <link rel="stylesheet" href="../../../static/css/bootstrap.min.css"> -->
+	<!-- <link rel="shortcut icon" href="../../static/imagenes/logobb.png" type="image/x-icon"> -->
+	<link rel="stylesheet" th:href="@{/css/main.css}">
+	<link rel="shortcut icon" href="@{/imagenes/logobb.png}" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet" />
+	<style>
+		body {
+			font-family: 'Inder';
+		}
+
+		.card-header {
+			padding: .5rem 1rem;
+			margin-bottom: 0;
+			background-color: transparent;
+			border-bottom: transparent;
+		}
+
+		.card-header:hover {
+			font-size: 35px;
+		}
+
+		.card {
+			border-radius: 10px;
+		}
+
+		.text-wb {
+			font-size: 17px;
+			color: #202020;
+		}
+
+		.text-wb:hover {
+			color: #202020;
+		}
+
+		.btn {
+			padding: 6px 22px;
+		}
+	</style>
+</head>
+
+<body>
+	<header th:replace="plantillas/navbar::header(2)"></header>
+
+	<div class="container p-3">
+		<div class="card">
+			<div class="card-header">
+				<h2>Editar Empleado</h2>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/views/empleado/actualizar}" method="post">
+					<input type="hidden" name="id" th:value="${empleado.id}">
+					<div class="row g-3">
+						<div class="col-md-4">
+							<label class="form-label">Apellido Paterno</label> <input type="text" class="form-control" name="paterno"
+								th:value="${empleado.paterno}">
+						</div>
+						<div class="col-md-4">
+							<label class="form-label">Apellido Materno</label> <input type="text" class="form-control" name="materno"
+								th:value="${empleado.materno}">
+						</div>
+						<div class="col-md-4">
+							<label class="form-label">Nombres</label> <input type="text" class="form-control" name="nombres"
+								th:value="${empleado.nombres}">
+						</div>
+						<div class="col-md-4">
+							<label class="form-label">Usuario</label> <input type="text" class="form-control" name="usuario"
+								th:value="${empleado.usuario}">
+						</div>
+						<div class="col-md-4">
+							<label class="form-label">Password</label>
+							<input type="password" class="form-control d-none" name="password" th:value="${empleado.password}">
+							<input type="text" class="form-control" name="newPassword" placeholder="*********">
+						</div>
+						<div class="col-md-4 d-none">
+							<label class="form-label">Estado</label> <select class="form-select" name="estado">
+								<option th:if="${empleado.estado == true}" value="true">Activo</option>
+								<option th:unless="${empleado.estado == false}" value="false">Inactivo</option>
+								<option th:if="${empleado.estado == false}" value="false">Inactivo</option>
+								<option th:unless="${empleado.estado == true}" value="true">Activo</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<button type="submit" class="btn btn-primary text-wb">Guardar</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="home::footer"></footer>
+</body>
+
+</html>

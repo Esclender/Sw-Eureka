@@ -44,30 +44,30 @@ public class ClienteController {
 		model.addAttribute("clientes", clientes.getContent());
 		model.addAttribute("clientesPage", clientes);
 
-		return "/views/cliente/listar";
+		return "views/cliente/listar";
 	}
 
 	@GetMapping("/views/cliente/create")
 	public String create(Model model) {
 		model.addAttribute("cliente", new Cliente());
-		return "/views/cliente/create";
+		return "views/cliente/create";
 	}
 
 	@PostMapping("/views/cliente/save")
 	public String guardar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attribute) {
 		log.info("Objeto {}", cliente);
 		if (result.hasErrors()) {
-			return "/views/cliente/create";
+			return "views/cliente/create";
 		}
 
 		if (clienteService.isDniAlreadyInUse(cliente.getDni())) {
 			result.rejectValue("dni", "error.user", "El Dni ya fue registrado");
-			return "/views/cliente/create";
+			return "views/cliente/create";
 		}
 
 		if (clienteService.isEmailAlreadyInUse(cliente.getCorreo())) {
 			result.rejectValue("correo", "error.user", "El Correo ya fue registrado");
-			return "/views/cliente/create";
+			return "views/cliente/create";
 		}
 
 		clienteService.crearCliente(cliente);
@@ -79,7 +79,7 @@ public class ClienteController {
 	public String actualizar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attribute) {
 		log.info("Objeto {}", cliente);
 		if (result.hasErrors()) {
-			return "/views/cliente/actualizar";
+			return "views/cliente/actualizar";
 		}
 
 		clienteService.actualizarCliente(cliente);
@@ -96,7 +96,7 @@ public class ClienteController {
 		}
 		log.info("Objeto {}", cliente);
 		model.addAttribute("cliente", cliente);
-		return "/views/cliente/edit";
+		return "views/cliente/edit";
 	}
 
 	@GetMapping("/views/cliente/delete/{id}")

@@ -51,7 +51,7 @@ public class CuentaBankController {
 		model.addAttribute("currentPage", pagina);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("pagesArray", numberToArray(totalPages));
-		return "/views/cuenta/listar";
+		return "views/cuenta/listar";
 	}
 
 	@GetMapping("/export-cuentas-pdf")

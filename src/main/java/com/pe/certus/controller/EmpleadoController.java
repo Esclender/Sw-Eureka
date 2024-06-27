@@ -48,7 +48,7 @@ public class EmpleadoController {
 		model.addAttribute("empleados", empleadosPage.getContent());
 		model.addAttribute("empleadosPage", empleadosPage);
 
-		return "/views/empleado/listar";
+		return "views/empleado/listar";
 	}
 
 	@GetMapping("/views/empleado/create")
@@ -61,7 +61,7 @@ public class EmpleadoController {
 	public String guardar(@Valid Empleado empleado, BindingResult result, RedirectAttributes attribute) {
 		log.info("Objeto {}", empleado);
 		if (result.hasErrors()) {
-			return "/views/empleado/create";
+			return "views/empleado/create";
 		}
 		empleadoService.crearEmpleado(empleado);
 		attribute.addFlashAttribute("success", "El Empleado se registro con éxito");
@@ -95,7 +95,7 @@ public class EmpleadoController {
 
 		log.info("Objeto {}", empleado);
 		model.addAttribute("empleado", empleado);
-		return "/views/empleado/edit";
+		return "views/empleado/edit";
 	}
 
 	@GetMapping("/views/empleado/delete/{id}")

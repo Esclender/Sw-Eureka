@@ -54,7 +54,7 @@ public class MovimientoBankController {
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("pagesArray", numberToArray(totalPages));
 
-		return "/views/movimiento/listar";
+		return "views/movimiento/listar";
 	}
 
 	@GetMapping("/export-movimientos-pdf")

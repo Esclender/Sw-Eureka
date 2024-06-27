@@ -10,6 +10,6 @@ public class LoginController {
 
 	@GetMapping({"/login","/index","/"})
 	public String login() {
-		return "/login/login";
+		return "login/login";
 	}
 }

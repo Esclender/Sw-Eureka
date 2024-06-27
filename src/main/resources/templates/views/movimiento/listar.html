@@ -188,7 +188,7 @@
                 </table>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                        <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
                             <a class="page-link" th:href="@{/views/movimiento(pagina=${currentPage - 1})}">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
@@ -197,7 +197,7 @@
                             th:classappend="${currentPage == i} ? 'active'">
                             <a class="page-link" th:href="@{/views/movimiento(pagina=${i})}" th:text="${i + 1}">1</a>
                         </li>
-                        <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                        <li class="page-item" th:classappend="${currentPage == totalPages } ? 'disabled'">
                             <a class="page-link" th:href="@{/views/movimiento(pagina=${currentPage + 1})}">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>

@@ -18,10 +18,11 @@ import java.util.Map;
 
 @Component
 public class ClientMovimientoBank {
+    public String movimientoUri = "http://ec2-54-233-114-125.sa-east-1.compute.amazonaws.com:8090";
     public Map<String, Object> apiMovimientoBank(int pagina) {
 
         // The base URL for the API
-        String baseUrl = "http://ec2-54-233-114-125.sa-east-1.compute.amazonaws.com:8090/movimientobank/api/v1/movimiento";
+        String baseUrl = movimientoUri + "/movimientobank/api/v1/movimiento";
 
         // Construct the URL with the pagina query parameter
         String urlWithPagination = baseUrl + "?pagina=" + pagina;
@@ -59,7 +60,7 @@ public class ClientMovimientoBank {
         // Set default value for pagina if it's null
 
         // The base URL for the API
-        String baseUrl = "http://ec2-54-233-114-125.sa-east-1.compute.amazonaws.com:8090/movimientobank/api/v1/movimiento/todos";
+        String baseUrl = movimientoUri + "/movimientobank/api/v1/movimiento/todos";
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpGet httpGet = new HttpGet(baseUrl);

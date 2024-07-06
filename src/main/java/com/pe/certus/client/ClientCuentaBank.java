@@ -18,9 +18,10 @@ import java.util.Map;
 
 @Component
 public class ClientCuentaBank {
+	public String cuentaUri  =  "http://ec2-54-233-114-125.sa-east-1.compute.amazonaws.com:8090";
 	public List<CuentaDto> apiCuentaBank() {
 		try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-			HttpGet httpGet = new HttpGet("http://ec2-54-233-114-125.sa-east-1.compute.amazonaws.com:8090/cuentabank/api/v1/cuenta/todo");
+			HttpGet httpGet = new HttpGet(cuentaUri + "/cuentabank/api/v1/cuenta/todo");
 			HttpResponse response = httpClient.execute(httpGet);
 			HttpEntity entity = response.getEntity();
 
@@ -40,7 +41,7 @@ public class ClientCuentaBank {
 	public Map<String, Object> apiCuentaBankPages(int pagina) {
 
 		// The base URL for the API
-		String baseUrl = "http://ec2-54-233-114-125.sa-east-1.compute.amazonaws.com:8090/cuentabank/api/v1/cuenta";
+		String baseUrl = cuentaUri + "/cuentabank/api/v1/cuenta";
 
 		// Construct the URL with the pagina query parameter
 		String urlWithPagination = baseUrl + "?pagina=" + pagina;

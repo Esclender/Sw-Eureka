@@ -14,24 +14,24 @@ import com.pe.certus.entity.Empleado;
 import com.pe.certus.repository.EmpleadoRepository;
 
 @Controller
-@RequestMapping({"/home"})
+@RequestMapping({ "/home" })
 public class HomeController {
 
 	private final Logger log = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Autowired
 	private EmpleadoRepository empleadoRepository;
-	
+
 	@GetMapping
 	public String home(Authentication auth, HttpSession session) {
 		String user = auth.getName();
-		if(session.getAttribute("usuario") == null) {
+		if (session.getAttribute("usuario") == null) {
 			Empleado usuario = empleadoRepository.findByUsuario(user);
 			log.info("Usuario {}", usuario);
 			session.setAttribute("usuario", usuario);
-			
+
 		}
-		
+
 		return "home";
 	}
 }
